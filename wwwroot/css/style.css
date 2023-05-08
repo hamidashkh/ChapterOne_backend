@@ -1,0 +1,554 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+body{
+    overflow-x:hidden ;
+}
+.flex{
+    display: flex;
+    align-items: center;
+}
+a{
+    text-decoration: none !important;
+}
+.container-custom{
+    padding-left: 4%;
+    padding-right: 4%;
+}
+.slogan{
+    background-color: #292929;
+    padding: 10px;
+}
+header .text-left{
+    display: flex;
+    align-items: center;
+}
+header .text-left > p{
+    font-family:"Josefin Sans",sans-serif;
+    color: #FFF;
+    margin-bottom: 0!important;
+    font-size: 10px;
+    letter-spacing: .35em;
+    
+}
+header .icons{
+    text-align: end ;
+}
+header a> i{
+    color: white ;
+    font-size: 18px;
+    margin-right: 5px;
+    
+}
+nav{
+    background-color: #FFF;
+    padding: 20px 0 ;
+    align-items: center;
+    
+}
+nav .right button{
+    margin-left: 10px;
+    margin-right: 10px;
+    border:  none;
+    background-color: transparent;
+}
+nav .right a{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.logo{
+    width: 60px;
+    height: 50px;
+    margin-right: 20px;
+}
+.logo img{
+    width: 100%;
+}
+.nav-bar a{
+    color: #292929;
+    font-family:"Cormorant Garamond",sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 23px;
+    padding: 0 0 0 20px;
+}
+.title{
+    overflow: hidden;
+    position: relative;
+    /* height: 400px; */
+}
+
+.text{
+    position: absolute;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    top: 40%;
+    color: white;
+    text-align: center;
+}
+.info{
+    padding-top: 150px !important;
+    padding-right: 100px;
+    padding-left: 100px;
+    margin-bottom: 10%;
+    text-align: center;
+    display: flex;
+}
+.box{
+    padding: 60px;
+    
+}
+.box span{
+    font-family:"Cormorant Garamond",sans-serif ;
+    font-size: 20px;
+    color:#999
+}
+.box .name{
+    font-size: 20px;
+    font-family:"Cormorant Garamond",sans-serif ;
+    color:#000
+}
+.box h4{
+    font-weight: 600;
+    margin-top: 15px;
+}
+.box .author{
+    font-family:"Josefin Sans",sans-serif;
+    font-size: 20px;
+    color:#999
+}
+.autobiography{
+    margin-top: 50px;
+}
+.autobiography .all-bck{
+    position: relative;
+}
+.autobiography .left p{
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    font-family:"Josefin Sans",sans-serif;
+    color: #949494;
+    letter-spacing:3px ;
+    font-size: 12px;
+}
+.autobiography .left h4{
+    position: absolute;
+    top: 45%;
+    left: 20%;
+    font-family:"Cormorant Garamond",sans-serif ;
+    font-size: 35px;
+}
+.autobiography .left span{
+     position: absolute;
+    top: 53%;
+    left: 20%;
+    font-family:"Cormorant Garamond",sans-serif ;    
+    color: rgb(85, 85, 85);
+    width: 25%;
+    line-height: 28px;
+    font-size: 19px;
+
+}
+.autobiography .left button{
+    position: absolute;
+    top: 75%;
+    left: 20%;
+    border: 1px solid black;
+    padding: 10px 30px;
+    background-color: #FAF9F5;
+}
+.autobiography .all-bck .right{
+    margin-bottom: 10%;
+}
+.autobiography .right img:first-child{
+    position: absolute;
+    top: -9%;
+    left: 57%;
+    z-index: 4;
+}
+.autobiography .right img:nth-child(2){
+    position: absolute;
+    top: 25%;
+    left: 67%;
+    z-index: 3;
+}
+.autobiography .right img:nth-child(3){
+    position: absolute;
+    top: 3%;
+    left:70%;
+}
+.autobiography .right img:nth-child(4){
+    position: absolute;
+    top: 4%;
+    left:84%;
+}
+.autobiography .right img:nth-child(5){
+    position: absolute;
+    top: -9%;
+    left: 48%;
+    
+}
+
+.promo-prod{
+    background-color: #FBF9F6;
+    
+}
+.promo-prod{
+    text-align: center;
+    padding: 4%;
+    
+
+}
+.multi-carousel-inner{
+    display: flex;
+   
+    object-fit: contain;
+}
+.promo-prod h4{
+    margin: 40px 0;
+    font-family:"Josefin Sans",sans-serif;
+    color: #949494;
+    letter-spacing:3px ;
+    font-size: 12px;
+}
+
+
+footer{
+    display: flex;
+    justify-content: space-between;
+    height: 300px;
+    background-color: #282828;
+    padding: 73px 100px 75px 110px;
+    align-items: center;
+   
+    
+    
+}
+footer p{
+    color: #999;
+}
+footer h3{
+    color: #FAF9F5;
+    font-family: "Cormorant Garamond",sans-serif;
+}
+ul{
+    padding-left:  0 !important; ;
+    list-style-type: none;
+    font-family: "Cormorant Garamond",sans-serif;
+}
+ul a{
+    color: #c4c4c4;
+} 
+
+footer p{
+    width: 300px;
+}
+footer .contact a> i{
+    color: white ;
+    font-size: 14px;
+    margin-right: 5px;
+}
+footer input{
+    background-color: transparent;
+    border: 1px solid #999;
+    color: #999;
+    letter-spacing: .07em;
+    font-family: "Cormorant Garamond",sans-serif;
+    padding: 12px 19px;
+    font-size: 17px;
+    border-radius: 0;
+}
+
+footer button{
+    border: none;
+    background-color: transparent;
+    color: #999;
+    
+}
+footer button > i{
+    font-size:16px;
+}
+.events{
+    padding-top: 150px !important;
+    padding-right: 25%;
+    padding-left: 25%;
+    margin-bottom: 10%;
+    text-align: center;
+    
+    /* display: flex;
+    justify-content: center; */
+}
+.events p{
+    font-family:"Josefin Sans",sans-serif;
+    color: #949494;
+    letter-spacing:3px ;
+    font-size: 14px;
+}
+
+.events h1{
+    font-family: "Cormorant Garamond",sans-serif;
+    color: #000;
+    letter-spacing: .01em;
+    line-height: 40px;
+}
+.events span{
+    font-family:"Cormorant Garamond",sans-serif ;    
+    color: rgb(85, 85, 85);
+    width: 25%;
+    line-height: 28px;
+    font-size: 19px;
+}
+.date p{
+    font-size: 14px;
+    font-family: "Josefin Sans",sans-serif;
+    color: #999;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+}
+
+.date span{
+    font-size: 14px;
+    font-family: "Josefin Sans",sans-serif;
+    color: #999;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+}
+.date h3{
+    margin: 3px 20px;
+    font-size: 14px;
+    font-family: "Josefin Sans",sans-serif;
+    color: #999;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+}
+.date h4{
+    color: #000;
+    font-family: "Cormorant Garamond",sans-serif;
+    font-weight: 500;
+    letter-spacing: .01em;
+    word-wrap: break-word;
+}
+.date button{
+    background-color: transparent;
+    padding: 9px 27px 5px 32px;
+    border: 1px solid #858483;
+    font-family: "Josefin Sans",sans-serif;
+    font-size: 14px;
+    line-height: 2.857em;
+    letter-spacing: .35em;
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: color .2s ease-in-out,background-color .2s ease-in-out,border-color .2s ease-in-out;;
+}
+.date button:hover{
+    background-color: #363636;
+    color: #FFF;
+    padding: 9px 27px 5px 32px;
+    border: 1px solid #858483;
+    font-family: "Josefin Sans",sans-serif;
+    font-size: 14px;
+    line-height: 2.857em;
+    letter-spacing: .35em;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.date h4::before{
+    content: '';
+    display: block;
+    width: 1px;
+    background-color: #ccc;
+    height: 20px;
+    position: absolute;
+    left: -14%;
+    top: 55%;
+}
+.products .prods{
+   width: 95%;
+}
+.products .prods .img{
+    width: 100%;
+}
+.img img{
+    width: 100%;
+}
+.box{
+    padding: 20px !important;
+}
+.all-prod{
+    padding:10% ;
+}
+.all-prod p:first-child{
+    padding: 20px;
+    font-family:"Cormorant Garamond",sans-serif ;
+    font-size: 20px; 
+}
+.search input:first-child{
+    padding: 10px;
+    border: 1px solid #cfcfcf;
+    width: 270px;
+}
+.search{
+    position: relative;
+}
+.search > i{
+    position: absolute;
+    right: 5%;
+    top: 20%;
+}
+
+
+.carousel-inner{
+    background-color: rgb(239, 230, 213);
+    padding-top: 5%;
+}
+.carousel-item-text{
+    top: 20%;
+    left: 15%;
+}
+.carousel-item-text p{
+    font-family: Cormorant;
+    color: rgb(85, 85, 85);
+    white-space: normal;
+    text-align: left;
+    line-height: 33px;
+    letter-spacing: -1px;
+    font-weight: 400;
+    font-size: 20px;
+    transform-origin: 50% 50%;
+    opacity: 1;
+    transform: translate(0px, 0px);
+    visibility: visible;
+}
+.carousel-item-text h1{
+    font-family: "Cormorant Garamond";
+    height: auto;
+    width: auto;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    white-space: nowrap;
+    min-height: 0px;
+    min-width: 0px;
+    max-height: none;
+    max-width: none;
+    text-align: left;
+    line-height: 70px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 60px;
+    transform-origin: 50% 50%;
+    opacity: 1;
+    transform: translate(0px, 0px);
+    visibility: visible;
+}
+.carousel-item-text h3{
+    font-family: "Josefin Sans";
+    text-transform: uppercase;
+    height: auto;
+    width: auto;
+    color: rgb(153, 153, 153);
+    text-decoration: none;
+    white-space: nowrap;
+    min-height: 0px;
+    min-width: 0px;
+    max-height: none;
+    max-width: none;
+    text-align: left;
+    line-height: 40px;
+    letter-spacing: 4px;
+    font-weight: 400;
+    font-size: 12px;
+    transform-origin: 50% 50%;
+    opacity: 1;
+    transform: translate(0px, 0px);
+    visibility: visible;
+}
+.carousel-item-text a{
+    color: #fff;
+    background-color: #d14031;
+    border: 1px solid transparent;
+    padding: 15px 40px;
+    font-size: 13px;
+    line-height: 2.857em;
+    letter-spacing: .35em;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-family: "Josefin Sans",sans-serif;
+}
+
+.nav-tabs li a{
+    background-color: #fff !important;
+    border: 1px solid #f3f3f3 !important;
+    margin: 5px;
+    padding: 5px 40px;
+    font-family:"Cormorant Garamond",sans-serif ;
+    cursor: pointer;
+    color: #000;
+}
+.nav-tabs .active{
+    background-color: #000!important;
+    border: 1px solid #000!important;
+    color: #fff!important;
+    
+}
+.product-tab-area input{
+    width: 150px!important;
+}
+.searchbar {
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+}
+.search_input {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color: transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+}
+.searchbar:hover > .search_input {
+    padding: 0 10px;
+    width: 320px;
+    caret-color: red;
+    transition: width 0.4s linear;
+}
+.searchbar:hover > .search_icon {
+    background: black;
+    color: #e74c3c;
+}
+.search_icon {
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: black;
+    text-decoration: none;
+}
+
+.info .box>.profession{
+    margin: 6px 0 -7px;
+    font-family: "Josefin Sans",sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .35em;
+    color: #999;
+    line-height: 30px;
+}
+.product-tab-area{
+    margin-top: 7rem;
+}

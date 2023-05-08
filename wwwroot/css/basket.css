@@ -1,0 +1,83 @@
+.empty h2{
+    text-align: center;
+    padding: 10px 20px;
+    border: 1px solid #f3f3f3;
+    font-weight: 400;
+    margin: 30px 0;
+    font-family: "Cormorant Garamond",sans-serif;
+
+}
+.empty{
+    text-align: center;
+}
+.empty button{
+    text-decoration: none;
+    margin-bottom: 10px;
+    color: #fff;
+    background-color: #d14031;
+    border: none;
+    padding: 9px 27px 5px 32px;
+    font-family: "Josefin Sans",sans-serif;
+    font-size: 14px;
+    line-height: 2.857em;
+    letter-spacing: .35em;
+}
+.container-custom-basket{
+    padding: 10% 5%;
+}
+thead tr{
+    border-bottom: 1px solid #e1e1e1;
+}
+tbody td{
+    padding:10px;
+    border-bottom: 1px solid #e1e1e1    ;
+}
+table th{
+    padding: 10px 8px;
+    color: #000;
+    text-align: left;
+    color: #000;
+    font-family: "Cormorant Garamond",sans-serif;
+    margin: 25px 0;
+    font-weight: 500;
+    letter-spacing: .01em;
+    word-wrap: break-word;
+    font-size: 21px;
+    line-height: 1.19em;
+}
+table a{
+    color: #000;
+}
+
+.counter .down,.up{
+    color: #d14031;
+}
+.counter input{
+    text-align: center;
+    outline: none;
+   border: none;
+}
+table img{
+    width: 20%;
+}
+
+a{
+    text-decoration: none;
+    
+}
+
+.checkout a{
+    color: #fff;
+}
+.checkout button{
+    text-decoration: none;
+    margin-top: 10px;
+    color: #fff;
+    background-color: #d14031;
+    border: none;
+    padding: 9px 27px 5px 32px;
+    font-family: "Josefin Sans",sans-serif;
+    font-size: 14px;
+    line-height: 2.857em;
+    letter-spacing: .35em;
+}

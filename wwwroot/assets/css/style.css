@@ -100,9 +100,24 @@ nav .right a{
     text-align: center;
     display: flex;
 }
-.box{
+.img{
+    align-items:center;
+    object-fit:contain;
+    width:100%;
+}
+.img img{
+    width:100%;
+}
+.box button {
+    border: none;
+    font-family: "Josefin Sans",sans-serif;
+    font-size: 20px;
+    color: #999;
+    background:none;
+
+}
+.box {
     padding: 60px;
-    
 }
 .box span{
     font-family:"Cormorant Garamond",sans-serif ;
@@ -187,7 +202,7 @@ nav .right a{
 .autobiography .right img:nth-child(4){
     position: absolute;
     top: 4%;
-    left:84%;
+    left:80%;
 }
 .autobiography .right img:nth-child(5){
     position: absolute;

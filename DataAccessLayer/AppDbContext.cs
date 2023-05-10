@@ -15,6 +15,7 @@ namespace ChapterOne.DataAccessLayer
         public DbSet<Author> Authors { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<Team> Teams { get; set; }
 
 
 

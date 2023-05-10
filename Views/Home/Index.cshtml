@@ -10,9 +10,9 @@
                     <div class="carousel-inner position-relative active">
                        @foreach (Slider slider in Model.Sliders)
                     {
-                        <div class="carousel-item">
+                        <div class="carousel-item active">
                             <img class="d-block w-100" src="~/assets/images/@slider.Image" alt="Second slide">
-                            <div class="carousel-item-text col-4 p-3 position-absolute ">
+                            <div class="carousel-item-text position-absolute col-4 p-3 ">
 
                                 <h3>@slider.SubTitle</h3>
                                 <h1>@slider.MainTitle</h1>
@@ -52,95 +52,21 @@
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review-tab-pane" role="tab"
-                           aria-controls="review-tab-pane" aria-selected="false">Fantasy</a>
+                           aria-controls="review-tab-pane" aria-selected="false">New Arriwal</a>
                     </li>
                     
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="information-tab-pane" role="tabpanel"
                          aria-labelledby="information-tab" tabindex="0">
-                        <div class="product-body d-flex flex-wrap  justify-content-center">
-                            
-                            <div class="box col-2">
-                                <div class="img">
-                                    <a href="single.html">
-
-                                        <img src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-1-600x828.jpg" alt="">
-                                    </a>
-                                </div>
-                                <p class="author">John Strass</p>
-                                <p class="name">Winter Darkest Tragedy</p>
-                                <span>$38.00</span>
-
-                            </div>
-                            <div class="box col-2">
-                                <div class="img">
-                                    <a href="single.html">
-
-                                        <img src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-1-600x828.jpg" alt="">
-                                    </a>
-                                </div>
-                                <p class="author">John Strass</p>
-                                <p class="name">Winter Darkest Tragedy</p>
-                                <span>$38.00</span>
-
-                            </div>
-                            <div class="box col-2">
-                                <div class="img">
-                                    <a href="single.html">
-
-                                        <img src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-1-600x828.jpg" alt="">
-                                    </a>
-                                </div>
-                                <p class="author">John Strass</p>
-                                <p class="name">Winter Darkest Tragedy</p>
-                                <span>$38.00</span>
-
-                            </div>
-                            <div class="box col-2">
-                                <div class="img">
-                                    <a href="single.html">
-
-                                        <img src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-1-600x828.jpg" alt="">
-                                    </a>
-                                </div>
-                                <p class="author">John Strass</p>
-                                <p class="name">Winter Darkest Tragedy</p>
-                                <span>$38.00</span>
-
-                            </div>
-                        </div>
+                       @await Html.PartialAsync("_ProductListPartial",Model.Products)
                     </div>
                     <div class="tab-pane fade" id="description-tab-pane" role="tabpanel" aria-labelledby="description-tab"
                          tabindex="0">
-                        <div class="product-bestseller-body">
-                            <div class="box col-2">
-                                <div class="img">
-                                    <a href="single.html">
-
-                                        <img src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-1-600x828.jpg" alt="">
-                                    </a>
-                                </div>
-                                <p class="author">John Strass</p>
-                                <p class="name">Winter Darkest Tragedy</p>
-                                <span>$38.00</span>
-
-                            </div>
-                        </div>
+                     @await Html.PartialAsync("_ProductListPartial",Model.BestSeller)
                     </div>
                     <div class="tab-pane fade " id="review-tab-pane" role="tabpanel" aria-labelledby="review-tab" tabindex="0">
-                        <div class="box col-2">
-                            <div class="img">
-                                <a href="single.html">
-
-                                    <img src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-1-600x828.jpg" alt="">
-                                </a>
-                            </div>
-                            <p class="author">John Strass</p>
-                            <p class="name">Winter Darkest Tragedy</p>
-                            <span>$38.00</span>
-
-                        </div>
+                     @await Html.PartialAsync("_ProductListPartial",Model.NewArrival)
                     </div>
                 </div>
                 
@@ -152,32 +78,17 @@
             <div class="container-custom">
                 <div class="row">
                     <div class="container-custom flex">
-
+                    @foreach (Team team in Model.Teams)
+                    {
+                        
                         <div class="col-3 box">
-                            <img src="~/assets/images/team-1.png" alt="">
-                            <p class="profession">Author</p>
-                            <h4>Adam Strass</h4>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi, ut!</p>
+                            <img src="~/assets/images/team/@team.Image" alt="">
+                            <p class="profession">@team.Profession</p>
+                            <h4>@team.FullName</h4>
+                            <p>@team.Description</p>
                         </div>
-                        <div class="col-3 box">
-                            <img src="~/assets/images/team-1.png" alt="">
-                            <p class="profession">Designer</p>
-                            <h4>Jennifer Doe</h4>
-                            <p>Except sint occaecat cupidatat non proident, sunt culpa qui officia deserunt.</p>
-                        </div>
-                        <div class="col-3 box">
-                            <img src="~/assets/images/team-1.png" alt="">
-                            <p class="profession">
-                                Support</p]>
-                                <h4>James Coleman</h4>
-                            <p>Except sint occaecat cupidatat non proident, sunt culpa qui officia deserunt.</p>
-                        </div>
-                        <div class="col-3 box">
-                            <img src="~/assets/images/team-1.png" alt="">
-                            <p class="profession">Consultant</p>
-                            <h4>Linda Heyes</h4>
-                            <p>Except sint occaecat cupidatat non proident, sunt culpa qui officia deserunt.</p>
-                        </div>
+                    }
+                        
                     </div>
                 </div>
             </div>
@@ -194,9 +105,7 @@
                             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                             Ut enim ad minim veniam, quis nostrud.
                         </span>
-                        <!-- <button>
-                            READ MORE
-                        </button> -->
+                        
                     </div>
                     <div class="right">
                         <img src="//chapterone.qodeinteractive.com/wp-content/uploads/2019/08/about-us-rev-image-1.jpg" alt="">

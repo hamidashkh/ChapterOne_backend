@@ -1,4 +1,5 @@
 using ChapterOne.DataAccessLayer;
+using ChapterOne.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -8,6 +9,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("default"));
 });
+
+builder.Services.AddScoped<LayoutServices>();
 var app = builder.Build();
 
 app.UseStaticFiles();

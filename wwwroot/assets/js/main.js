@@ -100,7 +100,7 @@ function increaseCount(e, el) {
     }
   }
 
-  //basket
+
   
   
 

@@ -100,6 +100,11 @@ function increaseCount(e, el) {
     }
   }
 
+(function () {
+    document.getElementById("cart").on("click", function () {
+        document.getElementByClassName("shopping-cart").fadeToggle("fast");
+    });
+})();
 
   
   

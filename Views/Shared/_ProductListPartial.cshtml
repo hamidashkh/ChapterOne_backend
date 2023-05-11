@@ -6,16 +6,26 @@
         <div class="box col-2">
             <div class="img ">
                 <a href="single.html">
-                    <img src=@product.Image alt="">
+                    <img src="~/assets/images/product/@product.Image" alt="">
                 </a>
 
             </div>
             <p class="author">@product.Author.Name @product.Author.Surname</p>
             <p class="name">@product.Title</p>
-            <span>$@product.Price</span>
+            <div class="product-price">
+                @if (product.DiscountedPrice > 0)
+                {
+                                        <span class="regular-price ">€@product.Price</span>
+                                        <span class="price-sale">€@product.DiscountedPrice</span>
+                }
+                else
+                {
+                                            <span class="price-sale">€@product.Price</span>
+                }
+             </div>
             <div>
 
-                <button>ADD TO BASKET</button>
+                <a class="addToBasket" data-id="@product.Id"><i class="fa-solid fa-bag-shopping" style="color: #000000;"></i></a>
             </div>
 
         </div>

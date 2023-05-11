@@ -1,7 +1,8 @@
-﻿@inject LayoutServices layoutservice 
+﻿@inject ILayoutService layoutservice 
 
 @{
     IDictionary<string, string> settings = await layoutservice.GetSettings();
+    IEnumerable<BasketVM> basketVMs = await layoutservice.GetBaskets();
 }
 
 <!DOCTYPE html>
@@ -41,7 +42,9 @@
             </div>
         </section>
         <nav>
-            <div class="container-custom flex justify-content-between">
+            <div class="container-custom ">
+                <div class="flex justify-content-between">
+
                 <div class="nav-bar flex ">
                     <div class="logo">
                         <a href="index.html">
@@ -60,28 +63,65 @@
                                 <input id="searchInput" class="search_input" type="text" name="" placeholder="Search...">
                                 <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
                             </div>
-                            <div>
-                                <ul>
-                                    <li>
-                                        <a>
-                                            <img src="~/assets/images/"/>
-                                            <p>loremalooroemcsoicnmsokicmiosmcoms</p>
-                                            <span>50</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
+                            
                         </div>
                     </div>
-                    <a href="basket.html">
-                        <i class="fa-solid fa-bag-shopping" style="color: #000000;"></i>
-                    </a>
+
+                        <ul class="navbar-right">
+                            <li><a href="#" id="cart"><i class="fa fa-shopping-cart"></i> Cart <span class="badge">3</span></a></li>
+
+                        </ul>
+                        <div class="container">
+                          <div class="shopping-cart">
+                            <div class="shopping-cart-header">
+                              <i class="fa fa-shopping-cart cart-icon"></i><span class="badge">3</span>
+                              <div class="shopping-cart-total">
+                                <span class="lighter-text">Total:</span>
+                                <span class="main-color-text">$2,229.97</span>
+                              </div>
+                            </div> <!--end shopping-cart-header -->
+
+                            <ul class="shopping-cart-items">
+                              <li class="clearfix">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item1.jpg" alt="item1" />
+                                <span class="item-name">Sony DSC-RX100M III</span>
+                                <span class="item-price">$849.99</span>
+                                <span class="item-quantity">Quantity: 01</span>
+                              </li>
+
+                              <li class="clearfix">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item2.jpg" alt="item1" />
+                                <span class="item-name">KS Automatic Mechanic...</span>
+                                <span class="item-price">$1,249.99</span>
+                                <span class="item-quantity">Quantity: 01</span>
+                              </li>
+
+                              <li class="clearfix">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/cart-item3.jpg" alt="item1" />
+                                <span class="item-name">Kindle, 6" Glare-Free To...</span>
+                                <span class="item-price">$129.99</span>
+                                <span class="item-quantity">Quantity: 01</span>
+                              </li>
+                            </ul>
+
+                            <a href="#" class="button">Checkout</a>
+                          </div> <!--end shopping-cart -->
+                        </div> <!--end container -->
 
                     <a href="loginregister.html">
                         <i class="fa-solid fa-right-to-bracket" style="color: #000000;"></i>
                     </a>
+                      
                 </div>
+                </div>
+                <div class="d-flex justify-content-end" style="margin-right:100px">
+                <ul id="searchBody">
+                   
+
+                </ul>
             </div>
+            </div>
+            
 
         </nav>
 
@@ -152,7 +192,7 @@
 
     </footer>
 </body>
-<script src="~/assets/js    /jquery-1.12.4.min.js"></script>
+<script src="~/assets/js/jquery-1.12.4.min.js"></script>
 
 <script src="~/assets/js/main.js"></script>
 <script src="~/assets/js/custom.js"></script>

@@ -1,4 +1,5 @@
 using ChapterOne.DataAccessLayer;
+using ChapterOne.Interfaces;
 using ChapterOne.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,8 +10,13 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("default"));
 });
+builder.Services.AddScoped<ILayoutService, LayoutServices>();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(10);
+});
+builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddScoped<LayoutServices>();
 var app = builder.Build();
 
 app.UseStaticFiles();

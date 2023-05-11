@@ -1,5 +1,7 @@
 ﻿using ChapterOne.DataAccessLayer;
+using ChapterOne.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChapterOne.Controllers
 {
@@ -18,7 +20,11 @@ namespace ChapterOne.Controllers
 
         public async Task<IActionResult> Search(string search)
         {
-            return Ok(search);
+            IEnumerable<Product> products= await _context.Products.Where(p=>p.IsDeleted==false  &&
+            (p.Title.ToLower().Contains(search.ToLower())|| 
+            p.Author.Name.ToLower().Contains(search.ToLower()) || p.Author.Surname.ToLower().Contains(search.ToLower()))).ToListAsync();
+
+            return PartialView("_SearchPartial",products);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using ChapterOne.DataAccessLayer;
-using ChapterOne.Services;
+using ChapterOne.Interfaces;
 using ChapterOne.ViewModels.HomeViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,14 +9,11 @@ namespace ChapterOne.Controllers
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;
-        private readonly LayoutServices _layoutServices;
 
-       
-
-        public HomeController(AppDbContext context, LayoutServices layoutServices)
+        public HomeController(AppDbContext context)
         {
             _context= context;
-            _layoutServices = layoutServices;
+            
         }
         public async Task<IActionResult> Index()
         {

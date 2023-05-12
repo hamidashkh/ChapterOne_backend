@@ -1,0 +1,67 @@
+﻿@model IDictionary<string,string>
+<footer>
+    <div class="publishers col-4">
+
+        <h3>Publishers</h3>
+        <ul>
+            <li>
+                <a href="">
+                    Bestsellers
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    Interviews
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    Authors Story
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    Book Fairs
+                </a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="contact col-4">
+        <h3>Contact</h3>
+        <p>
+            Stay in touch with everything ChapterOne,
+            follow us on social media and learn about new promotions.
+        </p>
+        <p class="phone">@Model.FirstOrDefault(s=>s.Key=="Phone").Value</p>
+        <div class="col icons">
+            <a href="">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="">
+                <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="">
+                <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a href="">
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+
+        </div>
+    </div>
+    <div class="news col-4">
+        <h3>News & Update</h3>
+        <p>
+            We’d love it if you subscribed to
+            our newsletter! You’ll love it too.
+        </p>
+        <input type="email" name="" id="" placeholder="Email...">
+        <button>
+            <i class="fa-solid fa-paper-plane"></i>
+        </button>
+
+
+    </div>
+
+</footer>

@@ -692,7 +692,9 @@ footer button > i{
     justify-content: center;
     align-items: center;
 }
-
+.nav-item{
+list-style:none !important;
+}
 .basket-content {
     position: absolute;
     top: 15%;

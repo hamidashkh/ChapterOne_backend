@@ -1,0 +1,74 @@
+﻿@model HeaderVM
+
+<header>
+    <section class="slogan">
+        <div class="container-custom">
+            <div class="row ">
+                <div class="col-6 text-left">
+                    <p>@Model.Settings.FirstOrDefault(s=>s.Key == "Slogan").Value</p>
+                </div>
+                <div class="col icons">
+                    <a href="">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <nav>
+        <div class="container-custom ">
+            <div class="flex justify-content-between">
+
+                <div class="nav-bar flex ">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="@Model.Settings.FirstOrDefault(s=>s.Key=="Logo").Value" alt="">
+                        </a>
+                    </div>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="events.html">Events</a>
+                    <a href="shop.html">Shop</a>
+                </div>
+                <div class="right d-flex align-items-center">
+                    <div class="container h-100">
+                        <div class="d-flex justify-content-center h-100">
+                            <div class="searchbar">
+                                <input id="searchInput" class="search_input" type="text" name="" placeholder="Search...">
+                                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <li class="nav-item m-auto py-2 ">
+                        <div class="basket">
+                            @await Html.PartialAsync("_BasketPartial",Model.BasketVMs)
+                        </div>
+                    </li>
+
+
+                    <a href="loginregister.html">
+                        <i class="fa-solid fa-right-to-bracket" style="color: #000000;"></i>
+                    </a>
+
+                </div>
+            </div>
+            <div class="d-flex justify-content-end" style="margin-right:100px">
+                <ul id="searchBody">
+                </ul>
+            </div>
+        </div>
+
+
+    </nav>
+
+</header>

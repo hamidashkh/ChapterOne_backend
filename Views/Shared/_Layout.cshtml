@@ -3,7 +3,15 @@
 @{
     IDictionary<string, string> settings = await layoutservice.GetSettings();
     IEnumerable<BasketVM> basketVMs = await layoutservice.GetBaskets();
+
+    HeaderVM headerVM = new HeaderVM
+            {
+                BasketVMs = basketVMs,
+                Settings = settings,
+            };
 }
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,145 +25,12 @@
     <title>ChapterOne - Bookstore and Publisher</title>
 </head>
 <body>
-    <header>
-        <section class="slogan">
-            <div class="container-custom">
-                <div class="row ">
-                    <div class="col-6 text-left">
-                        <p>@settings.FirstOrDefault(s=>s.Key == "Slogan").Value</p>
-                    </div>
-                    <div class="col icons">
-                        <a href="">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="">
-                            <i class="fa-brands fa-facebook"></i>
-                        </a>
-                        <a href="">
-                            <i class="fa-brands fa-twitter"></i>
-                        </a>
-                        <a href="">
-                            <i class="fa-brands fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <nav>
-            <div class="container-custom ">
-                <div class="flex justify-content-between">
-
-                <div class="nav-bar flex ">
-                    <div class="logo">
-                        <a href="index.html">
-                            <img src="@settings.FirstOrDefault(s=>s.Key=="Logo").Value" alt="">
-                        </a>
-                    </div>
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About Us</a>
-                    <a href="events.html">Events</a>
-                    <a href="shop.html">Shop</a>
-                </div>
-                <div class="right d-flex align-items-center">
-                    <div class="container h-100">
-                        <div class="d-flex justify-content-center h-100">
-                            <div class="searchbar">
-                                <input id="searchInput" class="search_input" type="text" name="" placeholder="Search...">
-                                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <li class="nav-item m-auto py-2 ">
-                        <div class="basket">
-                            @await Html.PartialAsync("_BasketPartial",basketVMs)       
-                        </div>
-                    </li>
-                      
-
-                    <a href="loginregister.html">
-                        <i class="fa-solid fa-right-to-bracket" style="color: #000000;"></i>
-                    </a>
-                      
-                </div>
-                </div>
-                <div class="d-flex justify-content-end" style="margin-right:100px">
-                <ul id="searchBody">
-                   
-
-                </ul>
-            </div>
-            </div>
-            
-
-        </nav>
-
-    </header>
-   @RenderBody()
-    <footer>
-        <div class="publishers col-4">
-
-            <h3>Publishers</h3>
-            <ul>
-                <li>
-                    <a href="">
-                        Bestsellers
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        Interviews
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        Authors Story
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        Book Fairs
-                    </a>
-                </li>
-
-            </ul>
-        </div>
-        <div class="contact col-4">
-            <h3>Contact</h3>
-            <p>
-                Stay in touch with everything ChapterOne,
-                follow us on social media and learn about new promotions.
-            </p>
-            <div class="col icons">
-                <a href="@settings.FirstOrDefault(s=>s.Key =="instagram").Value">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-                <a href="">
-                    <i class="fa-brands fa-twitter"></i>
-                </a>
-                <a href="">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-            </div>
-        </div>
-        <div class="news col-4">
-            <h3>News & Update</h3>
-            <p>
-                We’d love it if you subscribed to
-                our newsletter! You’ll love it too.
-            </p>
-            <input type="email" name="" id="" placeholder="Email...">
-            <button>
-                <i class="fa-solid fa-paper-plane"></i>
-            </button>
+    @await Component.InvokeAsync("Header",headerVM)
 
 
-        </div>
-
-    </footer>
+    @RenderBody()
+    
+   @await Component.InvokeAsync("Footer")
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="~/assets/js/jquery-1.12.4.min.js"></script>

@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿
+
+$(document).ready(function () {
     $(".addToBasket").click(function myfunction(e) {
         e.preventDefault();
 
@@ -10,7 +12,7 @@
             }).then(data => {
                 console.log(data);
 
-                //$('.header-cart').html(data);
+                $('.basket').html(data);
             })
     })
 
@@ -30,3 +32,4 @@
         }
     })
 })
+

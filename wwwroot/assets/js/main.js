@@ -1,4 +1,16 @@
 
+$(document).ready(function () {
+
+    $(".basket .basket-icon").click(function () {
+        $(".basket-content").toggle("d-block");
+        console.log("hhwllo");
+        $(".basket-content .close-div").click(function () {
+            $(".basket-content").css({ "display": "none" });
+            
+        })
+    });
+});
+
 // function responsiveSlider() {
 //     const slider = document.querySelector('.container');
 //     let sliderWidth = slider.offsetWidth / 3;
@@ -100,11 +112,6 @@ function increaseCount(e, el) {
     }
   }
 
-(function () {
-    document.getElementById("cart").on("click", function () {
-        document.getElementByClassName("shopping-cart").fadeToggle("fast");
-    });
-})();
 
   
   

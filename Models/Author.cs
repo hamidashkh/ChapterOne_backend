@@ -1,8 +1,13 @@
-﻿namespace ChapterOne.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ChapterOne.Models
 {
     public class Author:BaseEntity
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
+        [StringLength(255)]
+        [Required]
+        public string FullName { get; set; }
+        
+        public IEnumerable<Product>? Products { get; set; } 
     }
 }

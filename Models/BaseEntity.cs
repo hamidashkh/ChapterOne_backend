@@ -7,7 +7,7 @@ namespace ChapterOne.Models
         public int Id { get; set; }
         public bool IsDeleted { get; set; }
         [StringLength(255)]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         public Nullable<DateTime> CreatedAt { get; set; }
         [StringLength(255)]
         public string? UpdatedBy { get; set; }

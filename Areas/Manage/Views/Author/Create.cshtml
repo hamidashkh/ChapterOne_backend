@@ -1,0 +1,30 @@
+﻿@model Author
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="row"
+    <div class="col-lg-2">
+        <h1 class="h3 mb-4  text-gray-800">Authors Create Page</h1>
+    </div>
+    
+<div class="row mx-auto">
+    <div class="col-lg-8">
+        <form method="post" >
+          <div class="mb-3">
+            <label asp-for="FullName" class="form-label"></label>
+            <input  asp-for="FullName" class="form-control" >
+            <span asp-validation-for="FullName" class="text text-danger"></span>
+          </div>
+          
+          
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div>
+</div>
+
+@section Scripts{
+    @await Html.PartialAsync("_Validation")
+}

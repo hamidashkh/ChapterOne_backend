@@ -17,7 +17,7 @@
             <thead>
                 <tr>
                     <th>
-                        Id
+                        №
                     </th>
                     <th>
                         FullName
@@ -31,6 +31,9 @@
                     <th>
                         Product Count
                     </th>
+                    <th>
+                        Setting 
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -43,7 +46,11 @@
                         <td>@author.CreatedAt?.ToString("dd-MMM-yyyy")</td>
                         <td>@author.CreatedBy</td>
                         <td>@author.Products?.Count()</td>
-
+                        <td class="text-center">
+                                <a asp-action="detail" asp-route-id="@author.Id" class="btn btn-primary">Detail</a>
+                                <a asp-action="update" asp-route-id="@author.Id" class="btn btn-warning">Update</a>
+                                <a asp-action="delete" asp-route-id="@author.Id" class="btn btn-danger">Delete</a>
+                        </td>
                     </tr>
                 }
             </tbody>

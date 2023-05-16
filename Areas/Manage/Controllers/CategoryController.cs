@@ -1,5 +1,6 @@
 ﻿using ChapterOne.DataAccessLayer;
 using ChapterOne.Models;
+using ChapterOne.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,9 +16,13 @@ namespace ChapterOne.Areas.Manage.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageindex=1)
         {
-            return View(await _context.Categories.Include(c=>c.Products).Where(c => c.IsDeleted == false).ToListAsync()) ;
+            IQueryable<Category> categories =  _context.Categories
+                .Include(c => c.Products)
+                .Where(c => c.IsDeleted == false);
+
+            return View(PageNatedList<Category>.Create(categories,pageindex,3)) ;
         }
 
         [HttpGet]
@@ -26,6 +31,7 @@ namespace ChapterOne.Areas.Manage.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Category category)
         {
             if (!ModelState.IsValid)
@@ -68,6 +74,7 @@ namespace ChapterOne.Areas.Manage.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Update(int? id,Category Category)
         {
             if (!ModelState.IsValid) return View(Category);

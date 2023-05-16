@@ -20,13 +20,15 @@ namespace ChapterOne.Models
         public bool IsBestSeller { get; set; }
         public bool IsNewArrival { get; set; }
         [StringLength(255)]
-        [Required]
-        public string Image { get; set; }
+        
+        public string? Image { get; set; }
 
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
         public int AuthorId { get; set; }
-        public Author Author { get; set; }
+        public Author? Author { get; set; }
+        [NotMapped]
+        public IFormFile? ImageFile { get; set; }
 
     }
 }

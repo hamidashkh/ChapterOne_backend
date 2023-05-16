@@ -1,5 +1,6 @@
 ﻿using ChapterOne.DataAccessLayer;
 using ChapterOne.Models;
+using ChapterOne.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,15 +16,18 @@ namespace ChapterOne.Areas.Manage.Controllers
             _context = context;
         }
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageIndex=1)
         {
-            IEnumerable<Author> authors = await _context.Authors
-                .Include(a=>a.Products.Where(p=>p.IsDeleted==false))
+            IQueryable<Author> authors = _context.Authors
+                .Include(a => a.Products.Where(p => p.IsDeleted == false))
                 .Where(b => b.IsDeleted == false)
-                .OrderByDescending(a => a.Id)
-                .ToListAsync();
+                .OrderByDescending(a => a.Id);
 
-            return View(authors);
+           
+
+            
+
+            return View( PageNatedList<Author>.Create(authors,pageIndex,3));
         }
         [HttpGet]
         public IActionResult Create()

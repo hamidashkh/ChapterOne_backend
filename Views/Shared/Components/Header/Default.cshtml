@@ -21,6 +21,7 @@
                         <i class="fa-brands fa-youtube"></i>
                     </a>
                 </div>
+               
             </div>
         </div>
     </section>
@@ -30,14 +31,15 @@
 
                 <div class="nav-bar flex ">
                     <div class="logo">
-                        <a href="index.html">
+                        <a asp-controller="Home" asp-action="Index">
                             <img src="@Model.Settings.FirstOrDefault(s=>s.Key=="Logo").Value" alt="">
                         </a>
                     </div>
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About Us</a>
-                    <a href="events.html">Events</a>
-                    <a href="shop.html">Shop</a>
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                    <a asp-controller="About" asp-action="Index">About Us</a>
+                    <a asp-controller ="Events" asp-action="Index">
+                        Events</a>
+                    <a asp-controller="Product" asp-action="Index">Shop</a>
                 </div>
                 <div class="right d-flex align-items-center">
                     <div class="container h-100">
@@ -56,9 +58,23 @@
                     </li>
 
 
-                    <a href="loginregister.html">
-                        <i class="fa-solid fa-right-to-bracket" style="color: #000000;"></i>
-                    </a>
+                     <div class="dropdown col">
+                    <button type="button" id="setting" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa-solid fa-user"></i></button>
+
+                    <ul class="dropdown-menu" aria-labelledby="setting">
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                            {
+                                
+                                <li><a asp-controller="Account" asp-action="SignOut">Sign Out</a></li>
+
+                            }
+                            else
+                            {
+                                <li style="color:black"><a asp-controller="Account" asp-action="Login">Sign In</a></li>
+                                <li style="color:black"><a asp-controller="Account" asp-action="Register">Sign Up</a></li>
+                            }
+                    </ul>
+                </div>
 
                 </div>
             </div>

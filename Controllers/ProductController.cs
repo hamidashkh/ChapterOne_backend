@@ -20,6 +20,7 @@ namespace ChapterOne.Controllers
 
         public async Task<IActionResult> Search(string search)
         {
+           
             IEnumerable<Product> products = await _context.Products.Where(p => p.IsDeleted == false &&
             (p.Title.ToLower().Contains(search.ToLower()) ||
             p.Author.FullName.ToLower().Contains(search.ToLower()))).ToListAsync();

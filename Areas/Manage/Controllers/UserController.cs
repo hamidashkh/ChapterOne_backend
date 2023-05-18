@@ -1,0 +1,95 @@
+﻿using ChapterOne.Areas.Manage.ViewModels.UserVMs;
+using ChapterOne.DataAccessLayer;
+using ChapterOne.Models;
+using ChapterOne.ViewModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace ChapterOne.Areas.Manage.Controllers
+{
+    [Area("manage")]
+    public class UserController : Controller
+    {
+        private readonly UserManager<AppUser> _userManager;
+        private readonly AppDbContext _context;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+        public UserController(UserManager<AppUser> userManager, AppDbContext context, RoleManager<IdentityRole> roleManager)
+        {
+            _userManager = userManager;
+            _context = context;
+            _roleManager = roleManager;
+        }
+
+        public async Task<IActionResult> Index(int pageIndex=1)
+        {
+            List<UserVM> query = await _userManager.Users
+                 .Where(u => u.UserName != User.Identity.Name)
+                 .Select(x => new UserVM
+                 {
+                     Id = x.Id,
+                     Email = x.Email,
+                     Name = x.Name,
+                     SurName = x.Surname,
+                     UserName = x.UserName
+                 })
+                 .ToListAsync();
+
+
+            foreach (var item in query)
+            {
+                string roleId = _context.UserRoles.FirstOrDefault(u => u.UserId == item.Id).RoleId;
+                string roleName = _context.Roles.FirstOrDefault(r => r.Id == roleId).Name;
+
+                item.RoleName = roleName;
+            }
+
+            return View(PageNatedList<UserVM>.Create(query.AsQueryable(), pageIndex, 3));
+        }
+
+        public async Task<IActionResult> ChangeRole(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id)) return BadRequest();
+
+            AppUser user = await _userManager.FindByIdAsync(id);
+
+            if (user == null) return NotFound();
+
+            string roleId = _context.UserRoles.FirstOrDefault(u => u.UserId == user.Id).RoleId;
+
+            UserChangeRoleVM userChangeRoleVM = new UserChangeRoleVM
+            {
+                UserId = user.Id,
+                RoleId = roleId
+            };
+
+            ViewBag.Role = await _roleManager.Roles.Where(c => c.Name != "SuperAdmin").ToListAsync();
+
+            return View(userChangeRoleVM);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangeRole(UserChangeRoleVM userChangeRoleVM)
+        {
+            ViewBag.Role = await _roleManager.Roles.Where(c => c.Name != "SuperAdmin").ToListAsync();
+
+            if (!ModelState.IsValid) return View(userChangeRoleVM);
+
+            if (string.IsNullOrWhiteSpace(userChangeRoleVM.UserId)) return BadRequest();
+
+            AppUser user = await _userManager.FindByIdAsync(userChangeRoleVM.UserId);
+
+            if (user == null) return NotFound();
+
+            string roleId = _context.UserRoles.FirstOrDefault(u => u.UserId == userChangeRoleVM.UserId).RoleId;
+            string roleName = _context.Roles.FirstOrDefault(r => r.Id == roleId).Name;
+            string newRoleName = _roleManager.Roles
+                .FirstOrDefault(c => c.Name != "SuperAdmin" && c.Id == userChangeRoleVM.RoleId).Name;
+            await _userManager.RemoveFromRoleAsync(user, roleName);
+            await _userManager.AddToRoleAsync(user, newRoleName);
+
+            return RedirectToAction(nameof(Index));
+        }
+    }
+}

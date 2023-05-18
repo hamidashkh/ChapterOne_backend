@@ -1,8 +1,10 @@
 ﻿using ChapterOne.DataAccessLayer;
 using ChapterOne.Models;
 using ChapterOne.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 namespace ChapterOne.Areas.Manage.Controllers
 {
@@ -124,10 +126,11 @@ namespace ChapterOne.Areas.Manage.Controllers
             }
 
             return View(author);
-            
         }
 
         [HttpGet]
+        [Authorize(Roles = "SuperAdmin,Admin")]
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -146,6 +149,8 @@ namespace ChapterOne.Areas.Manage.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "SuperAdmin,Admin")]
+
         public async Task<IActionResult> DeleteAuthor(int? id)
         {
             if (id == null)

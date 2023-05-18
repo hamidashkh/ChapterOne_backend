@@ -1,0 +1,65 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="row d-flex justify-content-between"
+    <div class="">
+        <div class="col-lg-2">
+            <h1 class="h3 mb-4  text-gray-800">Category Detail Page</h1>
+        </div>
+       <div class="col-lg-2">
+            <a class="btn btn-primary" asp-action="index" asp-controller="product" asp-area="manage">Back</a>
+        </div>
+    </div>
+    <div>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">FullName:@Model.Title</h5>
+          </div>
+        </div>
+    </div>
+    <div class="col-lg-12 ">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Price
+                    </th><th>
+                        DiscountedPrice
+                    </th>
+                    <th>
+                        Created At
+                    </th>
+                    <th>
+                        Created By
+                    </th>
+                    <th>
+                        Author
+                    </th>
+                    <th>
+                        Category
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                    <td>@Model.Title</td>
+                    <td>@Model.Price</td>
+                    <td>@Model.DiscountedPrice</td>
+                    <td>@Model.CreatedAt?.ToString("dd-MMM-yyyy")</td>
+                    <td>@Model.CreatedBy</td>
+                    @*<td>@Model.Author.FullName</td>
+                    <td>@Model.Category.Name</td>*@
+                    </tr>
+               
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

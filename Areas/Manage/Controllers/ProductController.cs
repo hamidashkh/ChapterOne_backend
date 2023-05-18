@@ -149,18 +149,82 @@ namespace ChapterOne.Areas.Manage.Controllers
 
                 dbProduct.Image = await product.ImageFile.CreateFileAsync(_env, "assets", "images", "product");
             }
-            //dbProduct.Title= product.Title;
-            //dbProduct.Description= product.Description;
-            //dbProduct.Price = product.Price;
-            //dbProduct.Category = product.Category;
-            //dbProduct.Author= product.Author;
-            //dbProduct.DiscountedPrice= product.DiscountedPrice;
-            //dbProduct.UpdatedAt= DateTime.UtcNow.AddHours(4);
-            //dbProduct.UpdatedBy = "System";
+            dbProduct.Title = product.Title;
+            dbProduct.Description = product.Description;
+            dbProduct.Category = product.Category;
+            dbProduct.Author= product.Author;   
+            dbProduct.UpdatedBy = "System";
+            dbProduct.UpdatedAt = DateTime.UtcNow.AddHours(4);
+            dbProduct.Count = product.Count;
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
+        [HttpGet]
+        public async Task<IActionResult> Detail(int? id)
+        {
+            ViewBag.Authors = await _context.Authors.Where(b => b.IsDeleted == false).ToListAsync();
+            ViewBag.Categories = await _context.Categories
+                .Where(b => b.IsDeleted == false)
+                .ToListAsync();
+            if (id == null)
+            {
+                return BadRequest();
+            }
+
+            Product product = await _context.Products.FirstOrDefaultAsync(a => a.IsDeleted == false && a.Id == id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+
+        }
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return BadRequest();
+            }
+
+            Product product = await _context.Products.FirstOrDefaultAsync(a => a.IsDeleted == false && a.Id == id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+        }
+        [HttpGet]
+        public async Task<IActionResult> DeleteProduct(int? id)
+        {
+            if (id == null) return BadRequest();
+
+            Product product = await _context.Products
+                .FirstOrDefaultAsync(c => c.Id == id && c.IsDeleted == false);
+
+            if (product == null) return NotFound();
+            
+
+            product.IsDeleted = true;
+            product.DeletedAt = DateTime.UtcNow.AddHours(4);
+            product.DeletedBy = "System";
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
-    
 }
+
+    
+
+
+    
+

@@ -1,4 +1,4 @@
-﻿
+﻿@model PageNatedList<Product>
 @{
     ViewData["Title"] = "Index";
 }
@@ -25,73 +25,33 @@
         </div>
         <div class="products d-flex ">
             <div class="prods d-flex flex-wrap">
-                <div class="box col-4">
-                    <div class="img">
-                        <a href="single.html">
+                @foreach (Product product in Model)
+                {
+                    <div class="box col-4">
+                        <div class="img">
+                            <a asp-controller="product" asp-action="detail" asp-route-id="@product.Id">
 
-                            <img src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-1-600x828.jpg" alt="">
-                        </a>
+                                <img src="~/assets/images/product/@product.Image" alt="">
+                            </a>
+                        </div>
+                        <p class="author">@product.Author?.FullName</p>
+                        <p class="name">@product.Title</p>
+                        <div class="product-price">
+                            @if (product.DiscountedPrice > 0)
+                            {
+                                <span class="regular-price ">€@product.Price</span>
+                                <span class="price-sale">€@product.DiscountedPrice</span>
+                            }
+                            else
+                            {
+                                <span class="price-sale">€@product.Price</span>
+                            }
+
+                        </div>
                     </div>
-                    <p class="author">John Strass</p>
-                    <p class="name">Winter Darkest Tragedy</p>
-                    <span>$38.00</span>
-
-                </div>
-                <div class="box col-4">
-                    <div class="img">
-                        <a href="">
-
-                            <img src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-7-600x829.jpg" alt="">
-                        </a>
-                    </div>
-                    <p class="author">John Strass</p>
-                    <p class="name">Winter Darkest Tragedy</p>
-                    <span>$38.00</span>
-                </div>
-                <div class="box col-4">
-                    <div class="img">
-                        <a href="">
-
-                            <img src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-8-600x829.jpg" alt="">
-                        </a>
-                    </div>
-                    <p class="author">John Strass</p>
-                    <p class="name">Winter Darkest Tragedy</p>
-                    <span>$38.00</span>
-                </div>
-                <div class="box col-4">
-                    <div class="img">
-                        <a href="">
-
-                            <img src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-2-600x829.jpg" alt="">
-                        </a>
-                    </div>
-                    <p class="author">John Strass</p>
-                    <p class="name">Winter Darkest Tragedy</p>
-                    <span>$38.00</span>
-                </div>
-                <div class="box col-4">
-                    <div class="img">
-                        <a href="">
-
-                            <img src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-3-600x829.jpg" alt="">
-                        </a>
-                    </div>
-                    <p class="author">John Strass</p>
-                    <p class="name">Winter Darkest Tragedy</p>
-                    <span>$38.00</span>
-                </div>
-                <div class="box col-4">
-                    <div class="img">
-                        <a href="single.html">
-
-                            <img src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/product-9-600x829.jpg" alt="">
-                        </a>
-                    </div>
-                    <p class="author">John Strass</p>
-                    <p class="name">Winter Darkest Tragedy</p>
-                    <span>$38.00</span>
-                </div>
+                    
+                }
+                
             </div>
             <div class="filter">
                 <div class="wrapper">
@@ -205,8 +165,33 @@
                     </ul>
                 </div>
             </div>
-
+          </div>
         </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                @if (Model.HasPrev)
+                {
+                    <li class="page-item border-1 ">
+                        <a class="page-link" asp-controller="product" asp-action="index" asp-route-pageIndex="@(Model.PageIndex-1)">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                }
+                @for (int i = Model.StartPage; i <= Model.EndPage; i++)
+                {
+                    <li class="@(i == Model.PageIndex ? "active page-item border-1 p-1 text-black":"page-item border-1 p-1 text-black")"><a asp-controller="product" asp-action="index" asp-route-pageIndex="@i">@i</a></li>
+                }
+                @if (Model.HasNext)
+                {
+
+                    <li class="page-item border-1">
+                        <a class="page-link" asp-controller="product" asp-action="index" asp-route-pageIndex="@(Model.PageIndex +1)">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                }
+            </ul>
+        </nav>
     </section>
 </main>
 

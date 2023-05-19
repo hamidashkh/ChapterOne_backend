@@ -1,0 +1,181 @@
+﻿@model ProductReviewVM
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<main>
+        <section class="title">
+            <div>
+                <img class="w-100" src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/shop-list-title-area-1.jpg" alt="">
+            </div>
+            <div class="text">
+                <h6>
+                    Products
+                </h6>
+                <h2>Shop List</h2>
+            </div>
+        </section>
+        <section class="prod-main  d-flex">
+             <div class="col-5 prod-image">
+
+            <img src="~/assets/images/product/@Model.Product.Image" alt="">
+            
+            </div>
+            <div class="col-7">
+                <p class="author-single">By @Model.Product.Author.FullName</p>
+            <h2 class="name-single">@Model.Product.Title</h2>
+            <p class="price-single">$@Model.Product.Price</p>
+            <p class="description-single">@Model.Product.Description</p>
+                    <div class="quantity d-flex align-items-center">
+
+                        <div class='counter'>
+                            <div class='down' onclick='decreaseCount(event, this)'>-</div>
+                            <input type='text' value='1' maxlength="10">
+                            <div class='up' onclick='increaseCount(event, this)'>+</div>
+                          </div>                          
+                        <button class="add">ADD TO BASKET</button>
+                    </div>
+                    <hr>
+                    <section class="author-info d-flex">
+                        <div class="author-img">
+                            <img src="https://chapterone.qodeinteractive.com/wp-content/uploads/2019/07/avatar-1.png" alt="">
+                        </div>
+                        <div class="right">
+
+                            <p class="author-city">France</p>
+                            <a href="">
+                        <h4 class="author-name">@Model.Product.Author.FullName</h4>
+                            </a>
+                            <p class="author-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                 quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                                 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        </div>
+                    </section>
+                    <hr>
+            </div>
+        </section>
+        <section class="prod-footer">
+            <div class="product-tab-area">
+                      <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link active" id="information-tab" data-bs-toggle="tab" data-bs-target="#information-tab-pane"
+                            role="tab" aria-controls="information-tab-pane" aria-selected="true">information</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link" id="description-tab" data-bs-toggle="tab" data-bs-target="#description-tab-pane"
+                            role="tab" aria-controls="description-tab-pane" aria-selected="false">description</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <a class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review-tab-pane" role="tab"
+                            aria-controls="review-tab-pane" aria-selected="false">Reviews <span>(0)</span> </a>
+                        </li>
+                      </ul>
+                      <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="information-tab-pane" role="tabpanel"
+                          aria-labelledby="information-tab" tabindex="0">
+                          <div class="product-information-body">
+                            <p>
+                                weight:
+                                <span>0.597 kg</span>
+                            </p>
+                            <p>
+                                page:
+                                <span>453</span>
+                            </p>
+                            <p>
+                                Type:
+                                <span>Paperback, Hardcover, Audiobook, Audio CD, Kindle</span>
+                            </p>
+
+                          </div>
+                        </div>
+                        <div class="tab-pane fade" id="description-tab-pane" role="tabpanel" aria-labelledby="description-tab"
+                          tabindex="0">
+                          <div class="product-description-body">
+                            <p class="short-desc">
+                              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+                              do eiusmod tempor incidid ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+
+                            </p>
+                          </div>
+                        </div>
+                        <div class="tab-pane fade " id="review-tab-pane" role="tabpanel" aria-labelledby="review-tab" tabindex="0">
+                          <div class="product-review-body">
+                            <div class="blog-comment text-start">
+                              <h4 class="heading">Comments (3)</h4>
+                              <div class="blog-comment-item">
+                                <div class="blog-comment-img">
+                                  <img src="assets/img/about/1-4-270x270.webp" alt="">
+                                </div>
+                                <div class="blog-comment-content">
+                                  <div class="user-meta">
+                                    <h2 class="user-name">Donald Chavez</h2>
+                                    <span class="date">21 July 2021</span>
+                                  </div>
+                                  <p class="user-comment">
+                                    Lorem ipsum dolor sit amet, consectetur adipisi elit, sed
+                                    do eiusmod tempor incidid ut labore etl dolore magna aliqua. Ut enim ad minim
+                                    veniam, quis nostrud exercitati ullamco laboris nisi ut aliquiex ea commodo
+                                    consequat.
+                                  </p>
+                                  <a class="comment-btn" href="">Reply</a>
+                                </div>
+                              </div>
+                              <div class="blog-comment-item">
+                                <div class="blog-comment-img">
+                                  <img src="assets/img/about/1-1-270x270.webp" alt="">
+                                </div>
+                                <div class="blog-comment-content">
+                                  <div class="user-meta">
+                                    <h2 class="user-name">Donald Chavez</h2>
+                                    <span class="date">21 July 2021</span>
+                                  </div>
+                                  <p class="user-comment">
+                                    Lorem ipsum dolor sit amet, consectetur adipisi elit, sed
+                                    do eiusmod tempor incidid ut labore etl dolore magna aliqua. Ut enim ad minim
+                                    veniam, quis nostrud exercitati ullamco laboris nisi ut aliquiex ea commodo
+                                    consequat.
+                                  </p>
+                                  <a class="comment-btn" href="">Reply</a>
+                                </div>
+                              </div>
+                              <div class="blog-comment-item">
+                                <div class="blog-comment-img">
+                                  <img src="assets/img/about/1-3-270x270.webp" alt="">
+                                </div>
+                                <div class="blog-comment-content">
+                                  <div class="user-meta">
+                                    <h2 class="user-name">Donald Chavez</h2>
+                                    <span class="date">21 July 2021</span>
+                                  </div>
+                                  <p class="user-comment">
+                                    Lorem ipsum dolor sit amet, consectetur adipisi elit, sed
+                                    do eiusmod tempor incidid ut labore etl dolore magna aliqua. Ut enim ad minim
+                                    veniam, quis nostrud exercitati ullamco laboris nisi ut aliquiex ea commodo
+                                    consequat.
+                                  </p>
+                                  <a class="comment-btn" href="">Reply</a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="feedback-area">
+                              @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
+                            {
+                              <h2 class="heading">Leave a comment</h2>
+                                @await Html.PartialAsync("_AddReviewPartial",Model.Review)
+                                
+                            }
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+
+    </main>

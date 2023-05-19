@@ -172,7 +172,7 @@ namespace ChapterOne.Areas.Manage.Controllers
                 return BadRequest();
             }
 
-            Product product = await _context.Products.FirstOrDefaultAsync(a => a.IsDeleted == false && a.Id == id);
+            Product product = await _context.Products.Include(p => p.Author).Include(p=>p.Category).FirstOrDefaultAsync(a => a.IsDeleted == false && a.Id == id);
 
             if (product == null)
             {

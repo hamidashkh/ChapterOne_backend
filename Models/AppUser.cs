@@ -14,7 +14,13 @@ namespace ChapterOne.Models
         [StringLength(100)]
 
         public string? FatherName { get; set; }
-        public IEnumerable<Review> Reviews { get; set; }
+       
+        public IEnumerable<Review>? Reviews { get; set; }
+        public IEnumerable<Address>? Addresses { get; set; }
+        public IEnumerable<Order>? Orders { get; set; }
+        public List<Basket>? Baskets { get; set; }
+
+
 
     }
 }

@@ -22,7 +22,9 @@ namespace ChapterOne.Models
         [StringLength(255)]
         
         public string? Image { get; set; }
-        public IEnumerable<Review> Reviews { get; set; }
+        public IEnumerable<Review>? Reviews { get; set; }
+        public IEnumerable<Basket>? Baskets { get; set; }
+
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
         public int AuthorId { get; set; }

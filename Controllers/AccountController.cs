@@ -3,6 +3,9 @@ using ChapterOne.DataAccessLayer;
 using ChapterOne.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ChapterOne.ViewModels.BasketViewModel;
+using Newtonsoft.Json;
 
 namespace ChapterOne.Controllers
 {
@@ -63,7 +66,8 @@ namespace ChapterOne.Controllers
         {
             if (!ModelState.IsValid) return View(loginVM);
 
-            AppUser appUser = await _userManager.FindByEmailAsync(loginVM.Email);
+            AppUser appUser = await _userManager.Users.Include(u=>u.Baskets.Where(b=>b.IsDeleted==false))
+                .FirstOrDefaultAsync(u=>u.NormalizedEmail==loginVM.Email.Trim().ToUpperInvariant());
 
             if (appUser == null) 
             {
@@ -83,6 +87,35 @@ namespace ChapterOne.Controllers
             {
                 ModelState.AddModelError("", "Email Or Password Is InCorrect");
                 return View(loginVM);
+            }
+
+            string basket = HttpContext.Request.Cookies["basket"];
+
+            if (string.IsNullOrWhiteSpace(basket))
+            {
+                if (appUser.Baskets != null && appUser.Baskets.Count() > 0)
+                {
+                    List<BasketVM> basketVMs = new List<BasketVM>();
+
+                    foreach (Basket basket1 in appUser.Baskets)
+                    {
+                        BasketVM basketVM = new BasketVM
+                        {
+                            Id = (int)basket1.ProductId,
+                            Count = basket1.Count,
+                        };
+
+                        basketVMs.Add(basketVM);
+                    }
+
+                    basket = JsonConvert.SerializeObject(basketVMs);
+
+                    HttpContext.Response.Cookies.Append("basket", basket);
+                }
+            }
+            else
+            {
+                HttpContext.Response.Cookies.Append("basket", "");
             }
 
             return RedirectToAction("Index","Home");

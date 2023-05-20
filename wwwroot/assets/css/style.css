@@ -786,3 +786,234 @@ list-style:none !important;
     .basket-setting .basket-price span {
         color: #6E6E6E;
     }
+.checkout-checkbox ul {
+    padding-top: 15px;
+}
+
+    .checkout-checkbox ul li {
+        display: inline-block;
+        margin-top: 15px;
+    }
+
+        .checkout-checkbox ul li + li {
+            margin-left: 48px;
+        }
+
+.shipping-address {
+    display: none;
+}
+
+.checkout-total-wrapper .checkout-total {
+    border: 2px solid #e5e5e5;
+    padding: 25px 30px;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .checkout-total-wrapper .checkout-total {
+        padding: 30px 20px;
+    }
+}
+
+.checkout-total-wrapper .checkout-total .title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #333;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .checkout-total-wrapper .checkout-total .title {
+        font-size: 18px;
+    }
+}
+
+.checkout-total-wrapper .checkout-total .title span {
+    display: block;
+    float: right;
+}
+
+.checkout-total-wrapper .checkout-total ul {
+    border-bottom: 1px solid #e5e5e5;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+    .checkout-total-wrapper .checkout-total ul li {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-box-pack: space-between;
+        -ms-flex-pack: space-between;
+        justify-content: space-between;
+        padding: 5px 0;
+    }
+
+.checkout-total-wrapper .checkout-total .checkout-total-sub {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -webkit-box-pack: space-between;
+    -ms-flex-pack: space-between;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.checkout-total-wrapper .checkout-total .total-value {
+    font-size: 16px;
+    color: #333;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1599px) {
+    .checkout-total-wrapper .checkout-total .total-value {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .checkout-total-wrapper .checkout-total .total-value {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 767px) {
+    .checkout-total-wrapper .checkout-total .total-value {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .checkout-total-wrapper .checkout-total .total-value {
+        font-size: 16px;
+    }
+}
+
+.checkout-total-wrapper .checkout-total .total-amount {
+    font-size: 16px;
+    color: #333;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1599px) {
+    .checkout-total-wrapper .checkout-total .total-amount {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .checkout-total-wrapper .checkout-total .total-amount {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 767px) {
+    .checkout-total-wrapper .checkout-total .total-amount {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+    .checkout-total-wrapper .checkout-total .total-amount {
+        font-size: 16px;
+    }
+}
+
+.checkout-payment-wrapper .checkout-payment {
+    border: 2px solid #e5e5e5;
+    padding: 25px 30px;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .checkout-payment-wrapper .checkout-payment {
+        padding: 30px 20px;
+    }
+}
+
+.checkout-payment-wrapper .checkout-payment ul li + li {
+    margin-top: 10px;
+}
+
+.checkout-payment-wrapper .checkout-payment ul li .custom-checkbox input[type="checkbox"] + label::before {
+    content: "";
+    background-color: #333;
+    border-radius: 4px;
+}
+
+.checkout-payment-wrapper .checkout-payment ul li .custom-checkbox input[type="checkbox"]:checked + label::before {
+    -webkit-transform: scale(0.75);
+    -moz-transform: scale(0.75);
+    -ms-transform: scale(0.75);
+    -o-transform: scale(0.75);
+    transform: scale(0.75);
+}
+
+.checkout-payment-wrapper .checkout-payment .single-payment .payment-radio input[type="radio"] {
+    display: none;
+}
+
+    .checkout-payment-wrapper .checkout-payment .single-payment .payment-radio input[type="radio"] + label span {
+        width: 15px;
+        height: 15px;
+        border: 1px solid #333;
+        border-radius: 4px;
+        cursor: pointer;
+        position: relative;
+        display: inline-block;
+        margin: 0px 8px -2px 0;
+    }
+
+        .checkout-payment-wrapper .checkout-payment .single-payment .payment-radio input[type="radio"] + label span::before {
+            position: absolute;
+            content: "";
+            background-color: #333;
+            border-radius: 4px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0);
+            -ms-transform: scale(0);
+            -o-transform: scale(0);
+            transform: scale(0);
+            font-size: 14px;
+            line-height: 0.8;
+        }
+
+    .checkout-payment-wrapper .checkout-payment .single-payment .payment-radio input[type="radio"]:checked + label span::before {
+        -webkit-transform: scale(0.75);
+        -moz-transform: scale(0.75);
+        -ms-transform: scale(0.75);
+        -o-transform: scale(0.75);
+        transform: scale(0.75);
+    }
+
+.checkout-payment-wrapper .checkout-payment .single-payment .payment-radio label {
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 0;
+}
+
+.checkout-payment-wrapper .checkout-payment .single-payment .payment-radio .payment-details {
+    display: none;
+}
+
+    .checkout-payment-wrapper .checkout-payment .single-payment .payment-radio .payment-details p {
+        padding-top: 10px;
+        color: #333;
+        font-size: 14px;
+    }
+
+.checkout-btn {
+    margin-top: 30px;
+}
+
+    .checkout-btn .main-btn {
+        height: 45px;
+        line-height: 45px;
+        padding: 0 20px;
+        letter-spacing: 0;
+    }

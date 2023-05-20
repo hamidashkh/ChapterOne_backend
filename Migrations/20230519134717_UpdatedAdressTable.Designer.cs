@@ -4,6 +4,7 @@ using ChapterOne.DataAccessLayer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ChapterOne.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230519134717_UpdatedAdressTable")]
+    partial class UpdatedAdressTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -206,56 +208,6 @@ namespace ChapterOne.Migrations
                     b.ToTable("Authors");
                 });
 
-            modelBuilder.Entity("ChapterOne.Models.Basket", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<DateTime?>("DeletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DeletedBy")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Baskets");
-                });
-
             modelBuilder.Entity("ChapterOne.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -331,33 +283,17 @@ namespace ChapterOne.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("Email")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<int>("No")
                         .HasColumnType("int");
-
-                    b.Property<string>("Phone")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("PostalCode")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("State")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("SurName")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -892,21 +828,6 @@ namespace ChapterOne.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ChapterOne.Models.Basket", b =>
-                {
-                    b.HasOne("ChapterOne.Models.Product", "Product")
-                        .WithMany("Baskets")
-                        .HasForeignKey("ProductId");
-
-                    b.HasOne("ChapterOne.Models.AppUser", "User")
-                        .WithMany("Baskets")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Product");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("ChapterOne.Models.Order", b =>
                 {
                     b.HasOne("ChapterOne.Models.AppUser", "User")
@@ -1033,8 +954,6 @@ namespace ChapterOne.Migrations
                 {
                     b.Navigation("Addresses");
 
-                    b.Navigation("Baskets");
-
                     b.Navigation("Orders");
 
                     b.Navigation("Reviews");
@@ -1057,8 +976,6 @@ namespace ChapterOne.Migrations
 
             modelBuilder.Entity("ChapterOne.Models.Product", b =>
                 {
-                    b.Navigation("Baskets");
-
                     b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618

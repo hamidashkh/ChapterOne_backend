@@ -1,6 +1,7 @@
 ﻿using ChapterOne.DataAccessLayer;
 using ChapterOne.Models;
 using ChapterOne.ViewModels.BasketViewModel;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -10,15 +11,19 @@ namespace ChapterOne.Controllers
     public class BasketController : Controller
     {
         private readonly AppDbContext _context;
-        
+        private readonly UserManager<AppUser> _userManager;
+
+
         public IActionResult Index()
         {
             return View();
         }
 
-        public BasketController(AppDbContext context)
+        public BasketController(AppDbContext context,UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
+
         }
 
         public async Task<IActionResult> AddBasket(int? id)
@@ -60,6 +65,31 @@ namespace ChapterOne.Controllers
                 basket = JsonConvert.SerializeObject(basketVMs);
 
                 HttpContext.Response.Cookies.Append("basket", basket);
+            }
+
+            if (User.Identity.IsAuthenticated)
+            {
+                AppUser appUser = await _userManager.Users
+                    .Include(u=>u.Baskets.Where(b=>b.IsDeleted==false))
+                    .FirstOrDefaultAsync(u=>u.NormalizedUserName == User.Identity.Name.ToUpperInvariant());
+
+                if (appUser.Baskets.Any(b=>b.ProductId==id))
+                {
+                    appUser.Baskets.FirstOrDefault(b => b.ProductId == id).Count = basketVMs.FirstOrDefault(b => b.Id == id).Count;
+                }
+                else
+                {
+
+                    Basket dbbasket = new Basket
+                    {
+                        ProductId = id,
+                        Count = basketVMs.FirstOrDefault(b=>b.Id==id).Count,
+                    };
+
+                    appUser.Baskets.Add(dbbasket);
+                }
+                    await _context.SaveChangesAsync();
+   
             }
 
             basket = JsonConvert.SerializeObject(basketVMs);

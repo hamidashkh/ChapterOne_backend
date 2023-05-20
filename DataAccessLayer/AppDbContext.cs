@@ -19,6 +19,10 @@ namespace ChapterOne.DataAccessLayer
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Team> Teams { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Address> Address { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Basket> Baskets { get; set; }
 
 
     }

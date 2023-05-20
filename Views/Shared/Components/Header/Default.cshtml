@@ -64,13 +64,14 @@
                     <ul class="dropdown-menu" aria-labelledby="setting">
                             @if (User.Identity.IsAuthenticated && User.IsInRole("Member"))
                             {
-                                
+
                                 <li><a asp-controller="Account" asp-action="SignOut">Sign Out</a></li>
+                                <li><a asp-controller="Order" asp-action="Order">CheckOut</a></li>
 
                             }
                             else
                             {
-                                <li style="color:black"><a asp-controller="Account" asp-action="Login">Sign In</a></li>
+                                <li style="color:black!important"><a asp-controller="Account" asp-action="Login">Sign In</a></li>
                                 <li style="color:black"><a asp-controller="Account" asp-action="Register">Sign Up</a></li>
                             }
                     </ul>

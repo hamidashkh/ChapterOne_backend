@@ -1,4 +1,4 @@
-﻿
+﻿@model Order
 @{
     ViewData["Title"] = "Checkout";
 }
@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-xl-8 col-lg-7">
                 <div class="checkout-form">
-                   
+                    @await Html.PartialAsync("_CheckoutPartial")
                 </div>
             </div>
             <div class="col-xl-4 col-lg-5">
@@ -30,15 +30,15 @@
                     <h4 class="allup-title">Cart Total</h4>
                     <div class="checkout-total mt-30">
                         <h4 class="title">Product  <span>Total</span></h4>
-                        @*<ul>
-                            @foreach (BasketVM basketVM in Model.BasketVMs)
+                        <ul>
+                            @*foreach (BasketVM basketVM in Model.BasketVMs)
                             {
                                 <li>
                                     <p class="total-value">@basketVM.Title X @basketVM.Count</p>
                                     <p class="total-amount">€@(basketVM.Price * basketVM.Count)</p>
                                 </li>
-                            }
-                        </ul>*@
+                            }*@
+                        </ul>
                         <div class="checkout-total-sub">
                             <p class="total-value">Sub Total</p>
                             <p class="total-amount">€104.00</p>
